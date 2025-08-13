@@ -1,6 +1,8 @@
-# PAM WatchID
+# pam-watchid
 
-A PAM plugin for authenticating using the new `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch` API in macOS 10.15 (or `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrCompanion` in macOS 15 or later), written in Swift.
+A PAM plugin, written in Swift, for Apple Watch and Touch ID authenticating using:
+- `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch` from macOS 10.15 to macOS 14; or
+- `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrCompanion` in macOS 15 or later
 
 ![](https://github.com/Logicer16/pam-watchid/blob/docs/demo.gif?raw=true)
 
@@ -16,7 +18,7 @@ xcode-select --install
 
 ### Quick Install (Recommended)
 
-```
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/logicer16/pam-watchid/HEAD/install.sh)" -- enable
 ```
 
