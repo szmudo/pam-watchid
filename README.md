@@ -1,6 +1,6 @@
 # pam-watchid
 
-A PAM plugin, written in Swift, for Apple Watch and Touch ID authenticating using:
+A PAM module, written in Swift, for Apple Watch and Touch ID authenticating using:
 - `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch` from macOS 10.15 to macOS 14; or
 - `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrCompanion` in macOS 15 or later
 
@@ -24,6 +24,10 @@ xcode-select --install
 
 > [!NOTE]
 > If you are using macOS Sonoma or later and have already modified `sudo_local`, ensure the file still contains the original `auth       sufficient     pam_tid.so` line, with or without the comment at the start. The enable script uses this to "anchor" where the `pam_watchid.so` line will be inserted. If the line isn't present, no changes will be made.
+
+### Nix
+
+The module is available from nixpkgs as `pam-watchid` and can be enabled using nix-darwin's [`security.pam.services.sudo_local.watchIdAuth`](https://nix-darwin.github.io/nix-darwin/manual/#opt-security.pam.services.sudo_local.watchIdAuth)
 
 ### Manual
 1. Run inside a cloned copy of the repo: 
