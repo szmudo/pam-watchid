@@ -5,7 +5,7 @@ LIBRARY_NAME = $(LIBRARY_PREFIX).so
 LIBRARY_PATH = $(LIBRARY_DIR)/$(LIBRARY_NAME)
 TARGET = apple-macosx10.15
 PAM_FILE_BASE = /etc/pam.d/sudo
-PAM_TEXT = auth sufficient $(LIBRARY_PATH)
+PAM_TEXT = auth sufficient $(LIBRARY_NAME)
 PAM_TID_TEXT = auth       sufficient     pam_tid.so
 
 all:
