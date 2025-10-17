@@ -4,7 +4,7 @@ A PAM module, written in Swift, for Apple Watch and Touch ID authenticating usin
 - `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch` from macOS 10.15 to macOS 14; or
 - `kLAPolicyDeviceOwnerAuthenticationWithBiometricsOrCompanion` in macOS 15 or later
 
-![](https://github.com/Logicer16/pam-watchid/blob/docs/demo.gif?raw=true)
+![](https://github.com/mostpinkest/pam-watchid/blob/docs/demo.gif?raw=true)
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ xcode-select --install
 ### Quick Install (Recommended)
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/logicer16/pam-watchid/HEAD/install.sh)" -- enable
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mostpinkest/pam-watchid/HEAD/install.sh)" -- enable
 ```
 
 > [!NOTE]
