@@ -12,7 +12,7 @@ ifeq ($(shell [[ '$(shell xcode-select -p)' == '/Library/Developer/CommandLineTo
 # Legacy build
 # For CLT due to poor support for building swift packages.
 # Swift packages do work in macOS Sonoma and later with the CLT, but are an order of magnitude slower than Xcode. 
-	swiftc Sources/pam-watchid/pam_watchid.swift -o $(LIBRARY_PREFIX)_x86_64.so -target x86_64-$(TARGET) -emit-library
+	#swiftc Sources/pam-watchid/pam_watchid.swift -o $(LIBRARY_PREFIX)_x86_64.so -target x86_64-$(TARGET) -emit-library
 	swiftc Sources/pam-watchid/pam_watchid.swift -o $(LIBRARY_PREFIX)_arm64.so -target arm64-$(TARGET) -emit-library
 	lipo -create $(LIBRARY_PREFIX)_arm64.so $(LIBRARY_PREFIX)_x86_64.so -output $(LIBRARY_NAME)
 else
