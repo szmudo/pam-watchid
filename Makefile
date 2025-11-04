@@ -1,7 +1,8 @@
 VERSION = $(shell cat VERSION)
+LIBRARY_DIR = /usr/local/lib/pam
 LIBRARY_PREFIX = pam_watchid
 LIBRARY_NAME = $(LIBRARY_PREFIX).so
-DESTINATION = /usr/local/lib/pam
+LIBRARY_PATH = $(LIBRARY_DIR)/$(LIBRARY_NAME)
 TARGET = apple-macosx10.15
 PAM_FILE_BASE = /etc/pam.d/sudo
 PAM_TEXT = auth sufficient $(LIBRARY_NAME)
@@ -22,8 +23,8 @@ else
 endif
 
 install: all
-	sudo mkdir -p $(DESTINATION)
-	sudo install -o root -g wheel -m 444 $(LIBRARY_NAME) $(DESTINATION)/$(LIBRARY_NAME).$(VERSION)
+	sudo mkdir -p $(LIBRARY_DIR)
+	sudo install -o root -g wheel -m 444 $(LIBRARY_NAME) $(LIBRARY_PATH).$(VERSION)
 
 enable: install
 ifeq (,$(wildcard $(PAM_FILE_BASE)_local.template))
@@ -40,3 +41,5 @@ else
 # Insert $(PAM_TEXT) after the pam_tid.so line. This allows pam_tid.so to be used by default (which unexpectedly allows watch authentication as well) with pam_watchid.so as a fallback in cases where pam_tid.so falls through due to TouchID being deemed unavailable by macOS.
 	grep $(LIBRARY_NAME) $(PAM_FILE) > /dev/null || sudo sed -i "" -e '/$(PAM_TID_TEXT)/s/$$/\n$(PAM_TEXT)/g' $(PAM_FILE)
 endif
+
+.PHONY: all install enable
